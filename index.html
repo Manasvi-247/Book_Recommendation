@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BookBinge 📖</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <header id="hero">
+    <h1>BookBinge 📖</h1>
+    <input 
+      type="search" 
+      id="search" 
+      placeholder="Search for books..." 
+      aria-label="Search for books" 
+      onkeyup="searchBooks()"
+    >
+    <button id="dark-mode-toggle">🌙Dark Mode</button>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section id="book-list" aria-live="polite">
+      <!-- Books will be dynamically added here -->
+    </section>
+  </main>
+
+  <!-- My Library Button -->
+  <button id="library-btn" aria-controls="library-panel" aria-expanded="false" onclick="toggleLibrary()">📚 My Library</button>
+
+  <!-- Slide-in Library Panel -->
+  <aside id="library-panel" aria-hidden="true">
+    <div class="library-header">
+      <h2>My Library</h2>
+      <button id="close-library" aria-label="Close library" onclick="toggleLibrary()">✖</button>
+    </div>
+    <div>
+      <label for="genre-filter">Filter by Genre: </label>
+      <select id="genre-filter" onchange="filterBooksByGenre()">
+        
+        <!-- Genres will be dynamically added here -->
+        <option value="">Select Genre</option>
+        <option value="">All Genres</option>
+        <option value="Classic">Classic</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Romance">Romance</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Young Adult">Young Adult</option>
+        <option value="Literature">Literature</option>
+      </select>
+    </div>
+    <ul id="saved-books"></ul>
+  </aside>
+  
+
+  <!-- Book Details Modal -->
+  <dialog id="book-modal">
+    <button id="close-modal" onclick="closeModal()">✖</button> <!-- Moved button here -->
+    <img id="modal-image" src="" alt="Book Cover">
+    <h2 id="modal-title"></h2>
+    <p id="modal-author"></p>
+    <p id="modal-description"></p>
+    <p id="modal-reviews"></p>
+  </dialog>
+
+  <!-- Background overlay -->
+  <div id="modal-overlay"></div>
+  <!-- Add a Genre Filter Dropdown inside the library panel -->
+  <div id="popup-message" class="hidden">Book added to library!</div>
+
+  <script src="script.js" type="module" defer></script>
+  <script  src="script2.js" type = "module"></script>
+</body>
+</html>
